@@ -3,6 +3,8 @@
 Example app giving you a good foundation for building a robust API
 service with Goliath, Grape, and Rabl.
 
+See my original presentation at http://slidesha.re/18noOc3
+
 ## Author
 
 Matt Patterson
