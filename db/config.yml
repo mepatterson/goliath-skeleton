@@ -1,0 +1,23 @@
+development:
+  host: localhost
+  adapter: mysql2
+  database: goliathskel-dev
+  pool: 5
+  timeout: 5000
+
+production:
+  host: localhost
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: goliathskel-prod
+  pool: 5
+  username: root
+  password:
+
+test: &test
+  host: localhost
+  adapter: mysql2
+  database: goliathskel-test
+  pool: 5
+  timeout: 5000
