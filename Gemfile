@@ -13,6 +13,9 @@ gem 'multi_json'
 gem 'oj'
 gem 'configatron'
 
+# for localization
+gem 'globalize3'
+
 # for building json responses
 gem 'rabl'
 

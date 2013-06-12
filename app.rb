@@ -9,7 +9,7 @@ require 'grape'
 require 'yaml'
 require 'pry'
 require 'em-synchrony/activerecord'
-
+require 'globalize3'
 
 Dir["./config/initializers/*.rb"].each { |f| require f }
 Dir["./app/models/*.rb"].each { |f| require f }

@@ -11,6 +11,25 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20130612150519) do
+
+  create_table "unlock_translations", :force => true do |t|
+    t.integer  "unlock_id"
+    t.string   "locale"
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
+
+  add_index "unlock_translations", ["locale"], :name => "index_unlock_translations_on_locale"
+  add_index "unlock_translations", ["unlock_id"], :name => "index_unlock_translations_on_unlock_id"
+
+  create_table "unlocks", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
 end
