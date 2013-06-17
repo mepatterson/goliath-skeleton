@@ -28,3 +28,7 @@ gem 'rspec'
 
 # for debugging
 gem 'pry'
+
+# for custom generators
+gem 'thor'
+gem 'colorize'

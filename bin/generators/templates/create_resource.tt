@@ -1,0 +1,9 @@
+class API<%= @version %>
+  class <%= @name.capitalize %> < Grape::API
+    version '<%= @version %>', using: :path
+
+    resource :<%= @name.downcase %> do
+      # TODO add more endpoints...
+    end
+  end
+end

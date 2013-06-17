@@ -1,0 +1,3 @@
+# add more attributes and nodes if you want something more exciting 
+# than the AR ID to be part of your JSON response
+attributes :id

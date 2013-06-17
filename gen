@@ -1,0 +1,5 @@
+#!/usr/bin/env ruby
+$: << File.expand_path("../bin/", __FILE__)
+require 'thor'
+require 'generators/gen'
+Gen.start

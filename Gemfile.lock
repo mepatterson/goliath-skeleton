@@ -29,6 +29,7 @@ GEM
     backports (3.3.1)
     builder (3.0.4)
     coderay (1.0.9)
+    colorize (0.5.8)
     configatron (2.10.0)
       yamler (>= 0.1.0)
     cookiejar (0.3.0)
@@ -154,6 +155,7 @@ PLATFORMS
 
 DEPENDENCIES
   activerecord (~> 3.2)
+  colorize
   configatron
   em-http-request
   em-synchrony
@@ -170,3 +172,4 @@ DEPENDENCIES
   rb-readline
   rspec
   standalone_migrations (~> 2.1)
+  thor

@@ -1,6 +1,8 @@
 Dir["./app/apis/**/*.rb"].each { |f| require f }
 
 class API < Grape::API
+  mount APIv1::Unlocks
+  
   format :json
   default_format :json
 
@@ -36,8 +38,6 @@ class API < Grape::API
       I18n.locale = :en
     end    
   end
-
-  mount APIv1::Unlocks
   
   resource 'servicehealth' do
     # GET http://0.0.0.0:9000/servicehealth/
