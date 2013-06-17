@@ -9,8 +9,8 @@ class API < Grape::API
   # handle exceptions in a way that doesn't blow up the API; we'd rather actually get these back
   # as a response in a JSON block that tells us the API couldn't handle the request
   rescue_from :all do |e|
-    API.logger.fatal "[FATAL] rescued from UnlockrAPI #{e.class.name}: #{e.to_s} in #{e.backtrace.first}"
-    rack_response({ message: "rescued from UnlockrAPI error: #{e.class.name}", exception: e.to_s, detail: e.backtrace.to_s })
+    API.logger.fatal "[FATAL] rescued from API #{e.class.name}: #{e.to_s} in #{e.backtrace.first}"
+    rack_response({ message: "rescued from API error: #{e.class.name}", exception: e.to_s, detail: e.backtrace.to_s })
   end
 
   helpers do
