@@ -45,6 +45,10 @@ class Gen < Thor
     # add a base.json.rabl to that view directory
     template "templates/create_base_rabl.tt", "app/views/api_#{version}/#{name.downcase}/base.json.rabl"
     
+    # add a new migration
+    now = Time.now.strftime("%Y%m%d%H%M%S")
+    template "templates/create_model_migration.tt", "db/migrate/#{now}_create_#{name.downcase}.rb"
+
     # add a new mount in the API class (api.rb)
     inject_into_class "app/api.rb", "API" do
       "  mount API#{version}::#{name.capitalize}\n"
@@ -60,6 +64,7 @@ class Gen < Thor
     remove_file "app/apis/#{version}/#{name.downcase}.rb"
     remove_file "app/models/#{name.downcase.singularize}.rb"
     remove_file "app/views/api_#{version}/#{name.downcase}/base.json.rabl"
+    Dir["db/migrate/*_create_#{name.downcase}.rb"].each { |f| remove_file f }
     puts "      #{'delete'.light_green}  mount API#{version}::#{name.capitalize}"
     gsub_file "app/api.rb", "  mount API#{version}::#{name.capitalize}\n", "", verbose: false
     # clean up if necessary

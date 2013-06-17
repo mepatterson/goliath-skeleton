@@ -1,0 +1,27 @@
+# need to require this stuff so we can play with AR models in the migration
+require 'goliath/goliath'
+require 'goliath/runner'
+require 'goliath/rack'
+require 'globalize3'
+Dir["./app/models/*.rb"].each { |f| require f }
+
+<%- model_klass = @name.classify %>
+
+class Create<%= @name.capitalize %> < ActiveRecord::Migration
+  def up
+    create_table :<%= @name.downcase %> do |t|
+      # TODO define your columns; remove next line if you don't want timestamps
+      t.timestamps
+    end
+
+    # TODO add fields in the hash that you want to translate, or...
+    # TODO ...remove next line if this model won't have any translated columns
+    <%= model_klass %>.create_translation_table!({  })
+  end
+
+  def down
+    drop_table :<%= @name.downcase %>
+    # TODO ...remove next line if this model won't have any translated columns
+    <%= model_klass %>.drop_translation_table!
+  end
+end
