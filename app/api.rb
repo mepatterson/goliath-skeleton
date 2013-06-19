@@ -1,8 +1,6 @@
 Dir["./app/apis/**/*.rb"].each { |f| require f }
 
-class API < Grape::API
-  mount APIv1::Unlocks
-  
+class API < Grape::API  
   format :json
   default_format :json
 
@@ -20,12 +18,11 @@ class API < Grape::API
     end
 
     def render_custom(rabl_template, object, status, args={})
-      args[:format] ||= 'json'
       args[:success] ||= true
-      render_options = { format: args[:format] }
+      render_options = { format: 'hash' }
       render_options[:locals] = args[:locals] if args[:locals]
       data = Rabl::Renderer.new(rabl_template, object, render_options).render
-      %({ "success": #{args[:success]}, "data": #{data} })
+      { success: args[:success], data: data }
     end
 
   end
@@ -39,6 +36,7 @@ class API < Grape::API
     end    
   end
   
+
   resource 'servicehealth' do
     # GET http://0.0.0.0:9000/servicehealth/
     desc "Returns a basic status report."
@@ -47,4 +45,7 @@ class API < Grape::API
     end      
   end
 
+  # NOTE: the mounts need to be *after* helpers and all that, or things get confused
+  mount APIv1::Unlocks
+  
 end

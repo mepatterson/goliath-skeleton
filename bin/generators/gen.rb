@@ -50,9 +50,9 @@ class Gen < Thor
     template "templates/create_model_migration.tt", "db/migrate/#{now}_create_#{name.downcase}.rb"
 
     # add a new mount in the API class (api.rb)
-    inject_into_class "app/api.rb", "API" do
-      "  mount API#{version}::#{name.capitalize}\n"
-    end
+    # TODO write code to do this automatically...
+    msg = "Make sure to add a new line `mount API#{version}::#{name.capitalize}` to the end of app/api.rb!"
+    puts "      #{msg.light_magenta}"
   end
 
 
