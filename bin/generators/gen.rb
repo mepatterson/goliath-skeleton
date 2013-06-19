@@ -51,8 +51,9 @@ class Gen < Thor
 
     # add a new mount in the API class (api.rb)
     # TODO write code to do this automatically...
-    msg = "Make sure to add a new line `mount API#{version}::#{name.capitalize}` to the end of app/api.rb!"
-    puts "      #{msg.light_magenta}"
+    # msg = "Make sure to add a new line `mount API#{version}::#{name.capitalize}` to the end of app/api.rb!"
+    # puts "      #{msg.light_magenta}"
+    inject_into_file 'app/api.rb', "\n  mount API#{version}::#{name.capitalize}", after: "  # -- ENDPOINT MOUNTS --"
   end
 
 

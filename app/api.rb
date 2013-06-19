@@ -46,6 +46,9 @@ class API < Grape::API
   end
 
   # NOTE: the mounts need to be *after* helpers and all that, or things get confused
+
+  # if you remove/modify the next comment, the gen script won't be able to auto-add mount lines
+  # -- ENDPOINT MOUNTS --
   mount APIv1::Unlocks
   
 end
